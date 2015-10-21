@@ -6,9 +6,9 @@ export default (wallet) => {
     // TODO: configurable amount?
     // through wallet.tresholdAmount?
     // or passed when calling test function?
-    const amount = 5460;
+    const amount = 10000;
     return wallet.createAddress({
-      label: 'abstract-bitcoin-wallet-test',
+      label: 'abw-test-send',
     })
     .then(({ address }) => {
       createdAddress = address;

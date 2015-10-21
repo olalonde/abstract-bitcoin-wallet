@@ -30,12 +30,14 @@ export default (wallet) => {
 
   let createdAddress;
   test('#createAdddress', (t) => {
-    return wallet.createAddress()
-      .then((address) => {
-        t.equal(typeof address, 'object', '');
-        t.equal(typeof address.address, 'string');
-        createdAddress = address;
-      });
+    return wallet.createAddress({
+      label: 'abw-test-createAddress',
+    })
+    .then((address) => {
+      t.equal(typeof address, 'object', '');
+      t.equal(typeof address.address, 'string');
+      createdAddress = address;
+    });
   });
 
   test('#address', (t) => {
