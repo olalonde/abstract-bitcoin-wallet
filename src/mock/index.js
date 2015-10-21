@@ -34,9 +34,13 @@ class MockWallet {
   send({ address, amount }) {
     return Promise.resolve()
     .then(() => {
-      const addrInfo = this._getAddrInfo(address);
-      addrInfo.balance += amount;
-      addrInfo.received += amount;
+      setTimeout(() => {
+        // wait 500 ms before updating address info
+        // to simulate slow wallet backend
+        const addrInfo = this._getAddrInfo(address);
+        addrInfo.balance += amount;
+        addrInfo.received += amount;
+      }, 500);
       return {
         hash: 'sometxhash',
       };
