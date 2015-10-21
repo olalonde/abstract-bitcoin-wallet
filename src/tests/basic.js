@@ -6,6 +6,7 @@ export default (wallet) => {
     'send',
     'createAddress',
     'address',
+    'transaction',
   ];
 
   test('implements all methods', (t) => {

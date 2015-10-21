@@ -63,6 +63,19 @@ class MockWallet {
       return this._getAddrInfo(address);
     });
   }
+
+  transaction({ hash }) {
+    return Promise.resolve()
+      .then(() => {
+        return {
+          hash,
+          outputs: [],
+          inputs: [],
+          fee: 100,
+          hex: 'deadbeef',
+        };
+      });
+  }
 }
 
 export default (config) => {
