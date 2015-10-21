@@ -1,12 +1,12 @@
 # abstract-bitcoin-wallet
 
-Base class and test suite for implementing Bitcoin wallet
-libraries.
+Interface and test suite for standardized bitcoin wallet libraries. For
+creating your own compatible implementation, see [Tests](#tests).
 
 ## Implementations
 
 - [mock-bitcoin-wallet](#mock-bitcoin-wallet)
-- bitgo-bitcoin-wallet
+- [bitgo-bitcoin-wallet](https://github.com/olalonde/bitgo-bitcoin-wallet)
 
 ## mock-bitcoin-wallet
 
@@ -55,7 +55,7 @@ Example response:
 
 ```javascript
 {
-  hash: 'txhash of the transaction`,
+  hash: 'txhash of the transaction',
 }
 ```
 
