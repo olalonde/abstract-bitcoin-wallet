@@ -1,5 +1,7 @@
 # abstract-bitcoin-wallet
 
+[![Build Status](https://travis-ci.org/olalonde/abstract-bitcoin-wallet.svg)](https://travis-ci.org/olalonde/abstract-bitcoin-wallet)
+
 Interface and test suite for standardized bitcoin wallet libraries. For
 creating your own compatible implementation, see [Tests](#tests).
 
