@@ -10,9 +10,11 @@
     "pretest": "npm run lint",
     "test": "babel-node ./src/mock/test",
     "test:watch": "npm run test -- -w",
+    "preversion": "npm test",
     "version:auto": "npm version $(conventional-recommended-bump --preset=angular)",
-    "prepublish": "npm run version:auto && npm run build",
-    "postpublish": "git push --tags && git push"
+    "postversion": "git push --tags && git push",
+    "publish:auto": "npm run version:auto && npm publish",
+    "prepublish": "npm run build"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
