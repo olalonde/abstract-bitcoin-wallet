@@ -1,7 +1,7 @@
 import initDebug from 'debug';
 
 export const retryConfig = {
-  retries: 12,
+  retries: 20,
   minTimeout: 1000,
 };
 
