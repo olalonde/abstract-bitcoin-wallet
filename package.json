@@ -47,5 +47,5 @@
     "eslint": "^1.6.0",
     "eslint-config-airbnb": "^0.1.0"
   },
-  "version": "0.3.2"
+  "version": "0.3.3"
 }
