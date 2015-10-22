@@ -2,7 +2,7 @@ import basic from './tests/basic';
 import send from './tests/send';
 import transaction from './tests/transaction';
 
-const tests = [ basic, send, transaction ];
+const tests = [ basic, transaction, send ];
 
 // TODO: pass treshold value, address format, etc.
 

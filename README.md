@@ -138,3 +138,4 @@ var wallet = yourCustomWallet({ someconfig: 'somevalue' });
 walletTests(wallet);
 ```
 
+For verbose output, set `DEBUG` to `abw`, e.g: `DEBUG=abw npm test`.

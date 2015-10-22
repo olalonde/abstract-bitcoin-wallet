@@ -1,14 +1,29 @@
 import test from 'blue-tape';
+import promiseRetry from 'promise-retry';
+import { retryConfig, debug } from './_common';
 
 export default (wallet) => {
   test('transaction', (t) => {
     const amount = 10000;
     let hashMemo;
+    let addressMemo;
     return wallet.createAddress({ label: 'abw-test-transaction' })
-    .then(({ address }) => wallet.send({ address, amount }))
+    .then(({ address }) => {
+      addressMemo = address;
+      return address;
+    })
+    .then((address) => wallet.send({ address, amount }))
     .then(({ hash }) => {
+      t.comment('sent ' + amount + ' to ' + addressMemo);
+      t.comment('tx hash: ' + hash);
       hashMemo = hash;
-      return wallet.transaction({ hash });
+      return promiseRetry((retry, number) => {
+        t.comment('try ' + number);
+        return wallet.transaction({ hash }).catch((err) => {
+          debug(err);
+          retry(err);
+        });
+      }, retryConfig);
     })
     .then((txInfo) => {
       t.equal(typeof txInfo, 'object');
