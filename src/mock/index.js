@@ -12,6 +12,7 @@ class AddrInfo {
 class MockWallet {
   constructor(config) {
     this.config = config;
+    this.network = config.network || 'testnet';
     this.code = new Mnemonic(config.mnemonic);
     this.xpriv = this.code.toHDPrivateKey();
     this.hdIndex = 0;
@@ -57,7 +58,7 @@ class MockWallet {
       .then(() => {
         const { privateKey } = this.xpriv.derive('m/' + this.hdIndex);
         this.hdIndex++;
-        const address = privateKey.toAddress().toString();
+        const address = privateKey.toAddress(this.network).toString();
         const addrInfo = this._getAddrInfo(address);
         return addrInfo;
       });
