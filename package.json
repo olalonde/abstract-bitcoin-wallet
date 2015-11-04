@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/olalonde/abstract-bitcoin-wallet",
   "dependencies": {
+    "bitcore-mnemonic": "^1.0.1",
     "blue-tape": "^0.1.10",
     "debug": "^2.2.0",
     "promise-retry": "^0.2.9"

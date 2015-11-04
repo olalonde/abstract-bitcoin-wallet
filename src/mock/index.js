@@ -1,3 +1,5 @@
+import Mnemonic from 'bitcore-mnemonic';
+
 class AddrInfo {
   constructor(opts) {
     this.address = opts.address || 'someaddress';
@@ -10,11 +12,14 @@ class AddrInfo {
 class MockWallet {
   constructor(config) {
     this.config = config;
+    this.code = new Mnemonic(config.mnemonic);
+    this.xpriv = this.code.toHDPrivateKey();
+    this.hdIndex = 0;
+
     this._summary = {
       balance: 0,
       confirmedBalance: 0,
     };
-    this._addressIndex = 0;
     this._addresses = {};
   }
 
@@ -50,8 +55,9 @@ class MockWallet {
   createAddress() {
     return Promise.resolve()
       .then(() => {
-        const address = 'someaddress' + this._addressIndex;
-        this._addressIndex++;
+        const { privateKey } = this.xpriv.derive('m/' + this.hdIndex);
+        this.hdIndex++;
+        const address = privateKey.toAddress().toString();
         const addrInfo = this._getAddrInfo(address);
         return addrInfo;
       });
