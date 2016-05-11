@@ -1,6 +1,6 @@
-import mockWallet from './';
-import walletTests from '../';
+import mockWallet from './'
+import walletTests from '../'
 
-const wallet = mockWallet({});
+const wallet = mockWallet({})
 
-walletTests(wallet);
+walletTests(wallet)
